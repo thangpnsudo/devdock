@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an idea or improvement for DevDock
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Vấn đề bạn đang gặp
+      description: Bạn đang cố làm điều gì mà DevDock chưa hỗ trợ tốt?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Đề xuất giải pháp
+      description: Mô tả tính năng bạn muốn có
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Các cách làm khác bạn đã thử

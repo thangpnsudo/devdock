@@ -1,0 +1,59 @@
+name: Publish pilot release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Pilot version, e.g. 0.12.0-pilot.1"
+        required: true
+        type: string
+      artifact_urls:
+        description: "Comma-separated public URLs of installer files (or leave empty and push to a branch)"
+        required: false
+        type: string
+      notes:
+        description: "Release notes shown to pilot users"
+        required: false
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download installers from URLs
+        env:
+          URLS: ${{ github.event.inputs.artifact_urls }}
+        run: |
+          if [[ -z "$URLS" ]]; then
+            echo "No artifact URLs supplied. Provide them in the workflow inputs." >&2
+            exit 1
+          fi
+          mkdir -p /tmp/release
+          IFS=',' read -ra parts <<< "$URLS"
+          for url in "${parts[@]}"; do
+            curl -fsSL -o "/tmp/release/$(basename "$url")" "$url" || exit 1
+          done
+
+      - name: Generate checksums
+        working-directory: /tmp/release
+        run: sha256sum * > SHA256SUMS.txt
+
+      - name: Create or update prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ github.event.inputs.version }}
+          NOTES: ${{ github.event.inputs.notes }}
+        run: |
+          if gh release view "v$VERSION" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release delete "v$VERSION" --repo "$GITHUB_REPOSITORY" --yes --cleanup-tag
+          fi
+          gh release create "v$VERSION" \
+            --repo "$GITHUB_REPOSITORY" \
+            --prerelease \
+            --title "DevDock $VERSION (Pilot)" \
+            --notes "${NOTES:-Pilot release $VERSION — see README for install instructions and feedback channels.}" \
+            /tmp/release/*

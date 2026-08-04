@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a bug in a DevDock build
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 0.12.0-pilot.1
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Linux (Debian/Ubuntu)
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Các bước tái hiện lỗi
+      placeholder: 1. Mở DevDock\n2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Hành vi mong đợi
+  - type: textarea
+    id: actual
+    attributes:
+      label: Hành vi thực tế
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log / ảnh chụp màn hình (nếu có)
+      description: Làm ơn đính kèm log lỗi hoặc screenshot để chúng tôi sửa nhanh hơn.

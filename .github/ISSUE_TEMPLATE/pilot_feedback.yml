@@ -1,0 +1,37 @@
+name: Pilot feedback
+description: Candid review of a DevDock pilot build — takes ~2 minutes
+title: "[Pilot] "
+labels: [pilot-feedback]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Version in the release tag you installed (e.g. 0.12.0-pilot.1)
+      placeholder: 0.12.0-pilot.1
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Linux (Debian/Ubuntu)
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Trải nghiệm của bạn
+      description: Điều gì khiến bạn tiếp tục dùng, và điều gì cản trở bạn?
+      placeholder: Tôi thích... / Tôi gặp khó khăn ở...
+    validations:
+      required: true
+  - type: textarea
+    id: suggestions
+    attributes:
+      label: Góp ý cải thiện
+      description: Tính năng hoặc thay đổi bạn muốn thấy trong các bản sau
