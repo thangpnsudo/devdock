@@ -10,6 +10,8 @@ your machine, and core features keep working fully offline.
 
 🌐 **Official website:** [https://devdock.io.vn](https://devdock.io.vn)
 
+![DevDock screenshot](assets/devdock-screenshot.png)
+
 ---
 
 ## Download DevDock
@@ -70,8 +72,7 @@ less searching, less remembering, more momentum.
 
 ### Architecture
 
-Local-first: a React 19 + TypeScript interface over a Rust core (SQLite + FTS5 for
-local storage). No account required; your data stays on your machine.
+Local-first (SQLite + FTS5 for local storage). No account required; your data stays on your machine.
 
 ### Roadmap
 
