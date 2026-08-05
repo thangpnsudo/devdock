@@ -8,25 +8,25 @@ DevDock reduces context switching for developers by bringing SSH, clipboard hist
 commands, and search into one fast, focused desktop application. Your data stays on
 your machine, and core features keep working fully offline.
 
-🌐 **Website chính thức:** [https://devdock.io.vn](https://devdock.io.vn)
+🌐 **Official website:** [https://devdock.io.vn](https://devdock.io.vn)
 
 ---
 
 ## Download DevDock
 
-Tải phiên bản mới nhất cho hệ điều hành của bạn:
+Download the latest build for your operating system:
 
 | OS | Installer | Architecture |
 |----|-----------|--------------|
-| Linux | [Tải .deb](LINK_SAP_BIET) | amd64 (x64) |
-| macOS | [Tải .dmg](LINK_SAP_BIET) | Apple Silicon (arm64) / Intel (x64) |
-| Windows | [Tải .exe](LINK_SAP_BIET) | x64 |
+| Linux | [Download .deb](LINK_SAP_BIET) | amd64 (x64) |
+| macOS | [Download .dmg](LINK_SAP_BIET) | Apple Silicon (arm64) / Intel (x64) |
+| Windows | [Download .exe](LINK_SAP_BIET) | x64 |
 
-> Các bản này là phiên bản **pilot** — chưa phải bản chính thức trên website. Bản
-> cài đặt được phát hành định kỳ để bạn trải nghiệm trước và đóng góp ý kiến giúp
-> sản phẩm ngày càng tốt hơn.
+> These are **pilot** builds — not yet the official release on the website. They
+> are published on a regular cadence so you can try new versions early and share
+> feedback that helps us improve the product.
 
-### Hướng dẫn cài đặt
+### Installation
 
 <details>
 <summary>Linux (Debian / Ubuntu)</summary>
@@ -35,69 +35,68 @@ Tải phiên bản mới nhất cho hệ điều hành của bạn:
 sudo apt install ./DevDock_<version>_amd64.deb
 ```
 
-Mở **DevDock** từ menu ứng dụng.
+Launch **DevDock** from your application menu.
 </details>
 
 <details>
 <summary>macOS (Apple Silicon / Intel)</summary>
 
-Mở file `.dmg` tương ứng với chip của bạn, kéo **DevDock** vào thư mục
-**Applications**. Nếu macOS yêu cầu, hãy cho phép ứng dụng trong
-**System Settings → Privacy & Security**.
+Open the `.dmg` for your chip, drag **DevDock** into **Applications**. If macOS
+asks, allow the app in **System Settings → Privacy & Security**.
 </details>
 
 <details>
 <summary>Windows</summary>
 
-Chạy file `.exe` và làm theo trình cài đặt, sau đó mở **DevDock** từ Start menu.
+Run the `.exe` and follow the installer, then launch **DevDock** from the Start menu.
 </details>
 
 ---
 
-## Sản phẩm
+## Product
 
-DevDock giữ mọi thứ trong ngày làm việc của developer gần với công việc thực tế:
-bớt tìm kiếm, bớt ghi nhớ, tăng tốc độ.
+DevDock keeps everything in a developer's day close to the work it belongs to:
+less searching, less remembering, more momentum.
 
-### Năm công cụ, một bộ nhớ làm việc
+### Five tools, one working memory
 
-| Khu vực | Chức năng |
-|---------|-----------|
-| **Workspace terminals** | Sắp xếp các phiên làm việc local và remote quanh dự án, không phải dựng lại bố cục mỗi sáng. |
-| **Clipboard memory** | Tự động lưu các đoạn sao chép, tìm lại dễ dàng, không mất thứ vừa copy. |
-| **Command library** | Biến lệnh và snippet thành bộ công cụ dùng lại được. |
-| **SSH connections** | Hosts, thông tin đăng nhập, phiên gần đây và terminal trong một luồng làm việc tập trung. |
-| **Search everything** | Một ô tìm kiếm trên clipboard, lệnh, snippet và servers — chạy offline. |
+| Area | What it does |
+|------|--------------|
+| **Workspace terminals** | Arrange local and remote sessions around a project — no rebuilding your layout every morning. |
+| **Clipboard memory** | Capture useful fragments automatically, find them later, and stop losing what you just copied. |
+| **Command library** | Turn commands and snippets into a reusable toolkit. |
+| **SSH connections** | Hosts, credentials, recent sessions, and terminal context in one focused workflow. |
+| **Search everything** | One query across clipboard, commands, snippets, and servers — fully offline. |
 
-### Kiến trúc
+### Architecture
 
-Local-first: giao diện React 19 + TypeScript trên nền core Rust (SQLite + FTS5 cho
-lưu trữ local). Không cần tài khoản; dữ liệu nằm trên máy của bạn.
+Local-first: a React 19 + TypeScript interface over a Rust core (SQLite + FTS5 for
+local storage). No account required; your data stays on your machine.
 
-### Lộ trình
+### Roadmap
 
-- **Đã có:** quy trình làm việc local-first cho cá nhân.
-- **Đang phát triển:** thư viện command/snippet dùng chung cho team, cấu hình
-  workspace quản lý tập trung, đồng bộ đám mây có mã hoá.
+- **Available now:** local-first desktop workflow for individuals.
+- **In development:** shared team command/snippet libraries, centrally managed
+  workspace configuration, encrypted cloud synchronization.
 
 ---
 
-## Phản hồi
+## Feedback
 
-DevDock được xây dựng công khai, và ý kiến của bạn từ các bản pilot là điều quyết
-định lộ trình phát triển. Chọn kênh phù hợp:
+DevDock is built in public, and your feedback on pilot builds is what drives the
+roadmap. Pick the channel that fits:
 
-- 🐞 **Gặp lỗi trong bản pilot** — mở [Bug report](../../issues/new?template=bug_report.yml)
-- 💡 **Ý tưởng / đề xuất tính năng** — mở [Feature request](../../issues/new?template=feature_request.yml)
-- 📝 **Đánh giá ngắn** — mở [Pilot feedback](../../issues/new?template=pilot_feedback.yml) (chỉ mất ~2 phút)
-- 💬 **Thảo luận mở** — tạo chủ đề trong [Discussions](../../discussions)
+- 🐞 **Bug in a pilot build** — open a [Bug report](../../issues/new?template=bug_report.yml)
+- 💡 **Idea / feature request** — open a [Feature request](../../issues/new?template=feature_request.yml)
+- 📝 **Quick review** — open [Pilot feedback](../../issues/new?template=pilot_feedback.yml) (~2 minutes)
+- 💬 **Open discussion** — start a thread in [Discussions](../../discussions)
 
-Khi báo lỗi, hãy kèm **phiên bản** (ở tên release) và **hệ điều hành + kiến trúc**
-để chúng tôi sửa nhanh hơn.
+When reporting a bug, include the **version** (shown in the release tag) and your
+**OS + architecture** to help us fix it faster.
 
 ---
 
 ## License
 
-Các bản pilot là phần mềm xem trước dành cho mục đích đánh giá. Xem ghi chú của
-từng release để biết thêm chi tiết.
+Pilot builds are preview software distributed for evaluation. See the notes of each
+release for details.
