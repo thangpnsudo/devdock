@@ -20,13 +20,16 @@ Download the latest build for your operating system:
 
 | OS | Installer | Architecture |
 |----|-----------|--------------|
-| Linux | [Download .deb](LINK_SAP_BIET) | amd64 (x64) |
+| Linux | [Download .deb](https://github.com/thangpnsudo/devdock/releases/download/v0.12.0/DevDock_0.12.0_amd64.deb) | amd64 (x64) |
 | macOS | [Download .dmg](LINK_SAP_BIET) | Apple Silicon (arm64) / Intel (x64) |
 | Windows | [Download .exe](LINK_SAP_BIET) | x64 |
 
 > These are **pilot** builds — not yet the official release on the website. They
 > are published on a regular cadence so you can try new versions early and share
 > feedback that helps us improve the product.
+
+Latest release: [v0.12.0 (Linux)](https://github.com/thangpnsudo/devdock/releases/tag/v0.12.0) ·
+[All releases](https://github.com/thangpnsudo/devdock/releases)
 
 ### Installation
 
