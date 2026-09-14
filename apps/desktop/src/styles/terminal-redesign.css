@@ -1,0 +1,582 @@
+/* DevDock terminal workspace. Layout and state ownership stay in terminal-workspace.css. */
+
+.dd-terminal-workspace,
+.dd-terminal-workspace__canvas,
+.dd-terminal-workspace__terminal,
+.dd-terminal-workspace__terminal .dd-terminal,
+.dd-terminal--minimal .dd-terminal__surface {
+  color: var(--dd-fg-soft);
+  background: #121214;
+}
+.dd-terminal-workspace__topbar,
+.dd-terminal-group-grid__status,
+.dd-group-terminal > header {
+  background: #171719;
+  border-color: var(--dd-border);
+}
+
+.dd-workspace-tool,
+.dd-workspace-mode button,
+.dd-terminal-tab {
+  color: var(--dd-fg-subtle);
+  transition: var(--dd-transition-control);
+}
+
+.dd-workspace-tool:hover,
+.dd-workspace-tool.is-active,
+.dd-workspace-mode button:hover,
+.dd-terminal-tab:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+
+.dd-workspace-mode {
+  padding: 2px;
+  background: var(--dd-bg-soft);
+  border: 1px solid var(--dd-border-subtle);
+  border-radius: var(--dd-radius-sm);
+}
+
+.dd-workspace-mode button.is-active {
+  color: white;
+  background: var(--dd-cobalt);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--dd-cobalt) 65%, white);
+}
+
+.dd-terminal-tab {
+  background: var(--dd-surface);
+  border: 1px solid transparent;
+}
+
+.dd-terminal-tab.is-active {
+  color: var(--dd-fg);
+  background: var(--dd-surface-selected);
+  border-color: color-mix(in srgb, var(--dd-cobalt) 35%, var(--dd-border));
+}
+
+.dd-terminal-tab--workspace > button[role='tab'] > svg {
+  color: var(--dd-fg-subtle);
+}
+.dd-terminal-tab--workspace.is-active > button[role='tab'] > svg {
+  color: var(--dd-cobalt-strong);
+}
+.dd-terminal-tab--workspace .dd-terminal-tab__count {
+  color: var(--dd-fg-muted);
+  background: var(--dd-surface-overlay);
+}
+.dd-terminal-tab--workspace.is-active .dd-terminal-tab__count {
+  color: white;
+  background: var(--dd-cobalt);
+}
+.dd-terminal-tab__dot {
+  background: var(--dd-fg-disabled);
+}
+.dd-terminal-tab.is-active .dd-terminal-tab__dot {
+  background: var(--dd-lime);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--dd-lime) 14%, transparent);
+}
+.dd-terminal-tab > .dd-terminal-tab__close:hover,
+.dd-terminal-workspace__topbar .dd-terminal-tabs__add:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+
+.dd-terminal-context-menu {
+  background: var(--dd-surface-overlay);
+  border-color: var(--dd-border-strong);
+  box-shadow: var(--dd-shadow);
+}
+.dd-terminal-context-menu button {
+  color: var(--dd-fg-soft);
+}
+.dd-terminal-context-menu button:hover:not(:disabled) {
+  color: var(--dd-fg);
+  background: var(--dd-surface-selected);
+}
+.dd-terminal-context-menu kbd {
+  color: var(--dd-fg-subtle);
+}
+
+.dd-terminal-empty {
+  color: var(--dd-fg-subtle);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(82, 114, 255, 0.09), transparent 28%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px) 0 0 / 36px 36px,
+    #121214;
+}
+.dd-terminal-empty > svg {
+  color: var(--dd-cobalt-strong);
+}
+.dd-terminal-empty strong {
+  color: var(--dd-fg);
+  font-family: var(--dd-font-display);
+  font-size: var(--dd-text-lg);
+}
+.dd-terminal-empty button,
+.dd-connections-drawer button {
+  color: var(--dd-fg-soft);
+  background: var(--dd-surface);
+  border-color: var(--dd-border-strong);
+}
+.dd-terminal-empty button:hover,
+.dd-connections-drawer button:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+.dd-terminal-empty button:first-child {
+  color: white;
+  background: var(--dd-cobalt);
+  border-color: var(--dd-cobalt-strong);
+}
+
+.dd-connections-panel,
+.dd-terminal-utility {
+  background: #171719;
+}
+.dd-connections-panel {
+  border-right-color: var(--dd-border);
+}
+.dd-terminal-utility {
+  border-left-color: var(--dd-border);
+}
+.dd-connections-panel__tabs,
+.dd-connections-panel__toolbar,
+.dd-terminal-utility__tabs,
+.dd-terminal-utility__toolbar,
+.dd-history-selection {
+  border-color: var(--dd-border);
+}
+
+.dd-connections-panel__tabs > button,
+.dd-terminal-utility__tabs > button {
+  position: relative;
+  color: var(--dd-fg-subtle);
+  transition: var(--dd-transition-control);
+}
+.dd-connections-panel__tabs > button:hover,
+.dd-terminal-utility__tabs > button:hover {
+  color: var(--dd-fg-soft);
+  background: var(--dd-surface-hover);
+}
+.dd-connections-panel__tabs > button.is-active,
+.dd-terminal-utility__tabs > button.is-active {
+  color: var(--dd-fg);
+  background: var(--dd-surface-selected);
+}
+.dd-connections-panel__tabs > button.is-active::after,
+.dd-terminal-utility__tabs > button.is-active::after {
+  position: absolute;
+  right: 7px;
+  bottom: 2px;
+  left: 7px;
+  height: 2px;
+  background: var(--dd-cobalt-strong);
+  border-radius: 2px;
+  content: '';
+}
+.dd-terminal-utility__tabs > button:nth-child(2).is-active::after {
+  background: var(--dd-orange);
+}
+.dd-terminal-utility__tabs > button:nth-child(3).is-active::after {
+  background: var(--dd-lime);
+}
+
+.dd-connections-panel__toolbar > button,
+.dd-host-view-switcher button {
+  color: var(--dd-fg-muted);
+  background: var(--dd-bg-soft);
+  border-color: var(--dd-border);
+}
+.dd-connections-panel__toolbar > button:hover,
+.dd-host-view-switcher button:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+.dd-connections-panel__toolbar > button:last-child,
+.dd-terminal-utility__toolbar > button,
+.dd-group-create button {
+  color: white;
+  background: var(--dd-cobalt);
+  border-color: var(--dd-cobalt-strong);
+}
+.dd-host-view-switcher button.is-active {
+  color: white;
+  background: var(--dd-cobalt);
+}
+
+.dd-connection-form,
+.dd-group-create {
+  background: var(--dd-surface-raised);
+  border-color: var(--dd-border-strong);
+  box-shadow: var(--dd-shadow);
+}
+.dd-group-create input,
+.dd-terminal-utility__toolbar label,
+.dd-clipboard-quick-add textarea {
+  color: var(--dd-fg);
+  background: var(--dd-bg-soft);
+  border-color: var(--dd-border-strong);
+}
+.dd-group-create input:focus,
+.dd-clipboard-quick-add textarea:focus {
+  border-color: var(--dd-focus);
+  box-shadow: var(--dd-focus-ring);
+}
+.dd-terminal-utility__toolbar label:focus-within {
+  border-color: var(--dd-border-strong);
+  box-shadow: none;
+  outline: none;
+}
+.dd-terminal-utility__toolbar input[type='search'],
+.dd-terminal-utility__toolbar input[type='search']:focus,
+.dd-terminal-utility__toolbar input[type='search']:focus-visible,
+.dd-sftp-filter input,
+.dd-sftp-filter input:focus,
+.dd-sftp-filter input:focus-visible {
+  border: 0 !important;
+  outline: 0;
+  box-shadow: none !important;
+  appearance: none;
+}
+.dd-terminal-utility__toolbar input[type='search']::-webkit-search-cancel-button {
+  display: none;
+}
+
+.dd-connections-panel .dd-ssh-row:hover {
+  background: var(--dd-surface-hover);
+}
+.dd-connections-panel .dd-ssh-row__actions button {
+  color: var(--dd-fg-subtle);
+}
+.dd-connections-panel .dd-ssh-row__actions button:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-overlay);
+}
+.dd-connections-panel .dd-ssh-row__actions .dd-ssh-row__delete:hover {
+  color: var(--dd-danger);
+  background: var(--dd-danger-soft);
+}
+.dd-connections-panel .dd-ssh-list--grid .dd-ssh-row {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+
+.dd-group-hint,
+.dd-terminal-group__main span,
+.dd-terminal-group-grid__status,
+.dd-utility-row code,
+.dd-history-selection,
+.dd-utility-empty {
+  color: var(--dd-fg-subtle);
+}
+
+.dd-terminal-group {
+  background: var(--dd-surface);
+  border-color: var(--dd-border-strong);
+}
+.dd-terminal-group.is-active {
+  background: var(--dd-surface-selected);
+  border-color: color-mix(in srgb, var(--dd-cobalt) 48%, var(--dd-border));
+}
+.dd-terminal-group.is-broadcasting {
+  background: color-mix(in srgb, var(--dd-orange) 10%, var(--dd-surface));
+  border-color: color-mix(in srgb, var(--dd-orange) 55%, var(--dd-border));
+}
+.dd-terminal-group__main {
+  color: var(--dd-fg-soft);
+}
+.dd-broadcast-toggle {
+  color: var(--dd-fg-muted);
+  border-color: var(--dd-border-strong);
+}
+.dd-broadcast-toggle.is-active {
+  color: var(--dd-orange);
+  background: color-mix(in srgb, var(--dd-orange) 13%, transparent);
+  border-color: color-mix(in srgb, var(--dd-orange) 52%, var(--dd-border));
+}
+.dd-terminal-group__delete {
+  color: var(--dd-fg-subtle);
+}
+.dd-terminal-group__delete:hover {
+  color: var(--dd-danger);
+  background: var(--dd-danger-soft);
+}
+
+.dd-terminal-group-grid__status strong {
+  color: var(--dd-fg);
+}
+.dd-terminal-group-grid__status b {
+  color: var(--dd-orange);
+  background: color-mix(in srgb, var(--dd-orange) 14%, transparent);
+}
+.dd-group-terminal {
+  background: #121214;
+  border-color: var(--dd-border);
+}
+.dd-group-terminal.is-active {
+  border-color: var(--dd-cobalt-strong);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dd-cobalt) 35%, transparent);
+}
+.dd-terminal-group-grid.is-broadcasting .dd-group-terminal {
+  border-color: color-mix(in srgb, var(--dd-orange) 55%, var(--dd-border));
+}
+.dd-group-terminal > header {
+  color: var(--dd-fg-muted);
+}
+.dd-group-terminal > header button {
+  color: var(--dd-fg-subtle);
+}
+
+.dd-terminal-resizer::after {
+  background: var(--dd-border-strong);
+  transition:
+    opacity var(--dd-duration-fast) var(--dd-ease-standard),
+    background var(--dd-duration-fast) var(--dd-ease-standard);
+}
+.dd-terminal-resizer:hover::after,
+.dd-terminal-resizer:active::after {
+  background: var(--dd-cobalt-strong);
+}
+
+.dd-terminal-utility__toolbar label {
+  transition: var(--dd-transition-control);
+}
+.dd-terminal-utility__toolbar input {
+  color: var(--dd-fg);
+}
+.dd-terminal-utility__toolbar > button:disabled {
+  color: var(--dd-fg-disabled);
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+  opacity: 1;
+}
+.dd-utility-row {
+  color: var(--dd-fg-muted);
+  transition: var(--dd-transition-control);
+}
+.dd-utility-row:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+  transform: translateX(2px);
+}
+.dd-utility-row__icon {
+  color: var(--dd-cobalt-strong);
+}
+.dd-terminal-utility:has(.dd-terminal-utility__tabs > button:nth-child(2).is-active)
+  .dd-utility-row__icon {
+  color: var(--dd-orange);
+}
+.dd-terminal-utility:has(.dd-terminal-utility__tabs > button:nth-child(3).is-active)
+  .dd-utility-row__icon {
+  color: var(--dd-lime);
+}
+.dd-history-row > input {
+  accent-color: var(--dd-cobalt);
+}
+.dd-utility-form,
+.dd-clipboard-quick-add {
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+}
+.dd-clipboard-quick-add button {
+  color: var(--dd-fg-muted);
+  background: var(--dd-surface-overlay);
+  border-color: var(--dd-border);
+}
+.dd-clipboard-quick-add button:last-child {
+  color: white;
+  background: var(--dd-cobalt);
+  border-color: var(--dd-cobalt-strong);
+}
+.dd-terminal-workspace input:focus,
+.dd-terminal-workspace textarea:focus,
+.dd-terminal-workspace select:focus,
+.dd-terminal-workspace [role='combobox'][data-state='open'] {
+  border-color: var(--dd-focus);
+}
+
+/* SFTP uses the same semantics without losing its approved multi-pane density. */
+.dd-sftp-workspace,
+.dd-sftp-panel {
+  color: var(--dd-fg-soft);
+  background: #141416;
+}
+.dd-sftp-workspace__toolbar,
+.dd-sftp-panel__header,
+.dd-sftp-pathbar,
+.dd-sftp-panel__footer,
+.dd-sftp-password {
+  background: #19191c;
+  border-color: var(--dd-border);
+}
+.dd-sftp-workspace__toolbar {
+  color: var(--dd-fg);
+}
+.dd-sftp-workspace__toolbar span,
+.dd-sftp-panel__footer {
+  color: var(--dd-fg-subtle);
+}
+.dd-sftp-workspace__toolbar button,
+.dd-sftp-password button {
+  color: white;
+  background: var(--dd-cobalt);
+  border-color: var(--dd-cobalt-strong);
+}
+.dd-sftp-panel {
+  border-right-color: var(--dd-border);
+  border-bottom-color: var(--dd-border);
+}
+.dd-sftp-panel.is-active-pane {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--dd-cobalt) 55%, transparent);
+}
+.dd-sftp-panel.is-drop-target {
+  background: color-mix(in srgb, var(--dd-orange) 8%, #141416);
+  box-shadow: inset 0 0 0 2px var(--dd-orange);
+}
+.dd-sftp-panel__identity {
+  color: var(--dd-fg);
+}
+.dd-sftp-panel__identity > svg,
+.dd-sftp-row__name svg,
+.dd-sftp-card .dd-sftp-row__name svg {
+  color: var(--dd-cobalt-strong);
+}
+.dd-sftp-panel__identity .dd-ui-select {
+  color: var(--dd-fg);
+  background: var(--dd-surface-overlay);
+}
+.dd-sftp-filter,
+.dd-sftp-password input {
+  color: var(--dd-fg-muted);
+  background: var(--dd-bg-soft);
+  border-color: var(--dd-border-strong);
+}
+.dd-sftp-filter:focus-within {
+  border-color: var(--dd-border-strong);
+  box-shadow: none;
+  outline: none;
+}
+.dd-sftp-password input:focus {
+  border-color: var(--dd-focus);
+}
+.dd-sftp-filter input,
+.dd-sftp-password input {
+  color: var(--dd-fg);
+}
+.dd-sftp-filter input::placeholder {
+  color: var(--dd-fg-subtle);
+}
+.dd-sftp-actions button,
+.dd-sftp-pathbar > button,
+.dd-sftp-transfer button {
+  color: var(--dd-fg-muted);
+}
+.dd-sftp-actions button:hover:not(:disabled),
+.dd-sftp-pathbar > button:hover:not(:disabled) {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+.dd-sftp-actions button[aria-label*='Delete'] {
+  color: var(--dd-danger);
+}
+.dd-sftp-breadcrumbs {
+  color: var(--dd-fg-subtle);
+}
+.dd-sftp-breadcrumbs button {
+  color: var(--dd-fg-soft);
+}
+.dd-sftp-breadcrumbs button:hover {
+  color: var(--dd-cobalt-strong);
+}
+.dd-sftp-table__head {
+  color: var(--dd-fg-muted);
+  background: var(--dd-bg-soft);
+  border-bottom-color: var(--dd-border);
+}
+.dd-sftp-table__head span {
+  border-right-color: var(--dd-border);
+}
+.dd-sftp-row {
+  color: var(--dd-fg-muted);
+  transition: var(--dd-transition-control);
+}
+.dd-sftp-row:hover {
+  color: var(--dd-fg);
+  background: var(--dd-surface-hover);
+}
+.dd-sftp-row.is-selected {
+  color: var(--dd-fg);
+  background: var(--dd-surface-selected);
+  box-shadow: inset 2px 0 var(--dd-cobalt);
+}
+.dd-sftp-row__name input,
+.dd-sftp-card .dd-sftp-row__name input {
+  accent-color: var(--dd-cobalt);
+}
+.dd-sftp-row__name span,
+.dd-sftp-card .dd-sftp-row__name span {
+  color: var(--dd-fg);
+}
+.dd-sftp-card {
+  color: var(--dd-fg-subtle);
+  background: var(--dd-surface);
+  border-color: var(--dd-border);
+  transition: var(--dd-transition-control);
+}
+.dd-sftp-card:hover {
+  background: var(--dd-surface-hover);
+  border-color: var(--dd-border-strong);
+  transform: translateY(-1px);
+}
+.dd-sftp-card.is-selected {
+  background: var(--dd-surface-selected);
+  border-color: var(--dd-cobalt-strong);
+}
+.dd-sftp-status,
+.dd-sftp-empty {
+  color: var(--dd-fg-subtle);
+}
+.dd-sftp-empty > span {
+  color: var(--dd-cobalt-strong);
+  background: var(--dd-surface-overlay);
+  border-color: var(--dd-border-strong);
+}
+.dd-sftp-empty strong {
+  color: var(--dd-fg);
+}
+.dd-sftp-progress {
+  color: var(--dd-fg);
+  background: color-mix(in srgb, var(--dd-orange) 12%, var(--dd-surface-overlay));
+  border-color: color-mix(in srgb, var(--dd-orange) 48%, var(--dd-border));
+}
+.dd-file-dialog-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+.dd-file-dialog {
+  color: var(--dd-fg);
+  background: var(--dd-surface-raised);
+  border-color: var(--dd-border-strong);
+}
+.dd-file-dialog > header button,
+.dd-file-dialog label {
+  color: var(--dd-fg-muted);
+}
+.dd-file-dialog label input {
+  color: var(--dd-fg);
+  background: var(--dd-bg-soft);
+  border-color: var(--dd-border-strong);
+}
+.dd-file-dialog > p {
+  color: var(--dd-danger);
+}
+.dd-file-dialog > footer button {
+  min-width: 68px;
+  color: var(--dd-fg-muted);
+  background: var(--dd-surface-overlay);
+  border-color: var(--dd-border);
+}
+.dd-file-dialog > footer button[type='submit'] {
+  color: white;
+  background: var(--dd-cobalt);
+  border-color: var(--dd-cobalt-strong);
+}

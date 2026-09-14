@@ -1,0 +1,81 @@
+# Rust
+target/
+**/*.rs.bk
+Cargo.lock.bak
+.cache/
+
+# Node
+node_modules/
+**/node_modules/
+.pnpm-store/
+
+# Build artifacts
+dist/
+dist-electron/
+release/electron/
+apps/desktop/release/
+apps/desktop/release/electron/
+apps/desktop/release/electron/linux-unpacked/
+
+build/
+out/
+*.tsbuildinfo
+.turbo/
+.vite/
+.next/
+.tmp/
+data/releases/
+/releases/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Environment
+.env
+.env.prod
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# SQLite databases (DevDock data)
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Tauri
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+
+# Generated
+**/*.generated.ts
+**/*.generated.rs
+
+# Claude Code workspace config (not part of the project)
+.claude/
+
+# Local tooling and temp environments
+.git-filter-repo-venv/
+.agents
+.agents/**

@@ -1,0 +1,31 @@
+{
+  "name": "@devdock/config",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared TypeScript and toolchain configuration presets for DevDock",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    "./tsconfig.app.json": "./tsconfig.app.json",
+    "./tsconfig.lib.json": "./tsconfig.lib.json",
+    "./eslint.config.js": "./eslint.config.js",
+    "./prettier.config.js": "./prettier.config.js"
+  },
+  "files": [
+    "tsconfig.app.json",
+    "tsconfig.lib.json",
+    "eslint.config.js",
+    "prettier.config.js"
+  ],
+  "scripts": {
+    "lint": "echo \"(no lint)\"",
+    "format": "echo \"(no format)\"",
+    "format:check": "echo \"(no format check)\"",
+    "test": "echo \"(no tests)\"",
+    "typecheck": "echo \"(no typecheck)\""
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
+}

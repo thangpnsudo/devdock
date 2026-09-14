@@ -1,0 +1,147 @@
+{
+  "name": "@devdock/desktop",
+  "version": "0.15.5",
+  "private": true,
+  "description": "DevDock terminal workspace (React 19 + Electron + node-pty)",
+  "author": "thangpnsudo",
+  "homepage": "https://github.com/thangpnsudo/devdock",
+  "desktopName": "dev.devdock.desktop",
+  "main": "dist-electron/main.cjs",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "electron:build-main": "node scripts/build-electron.mjs",
+    "electron:rebuild": "electron-rebuild -f -w node-pty",
+    "electron:dev": "pnpm electron:build-main && concurrently -k \"vite\" \"wait-on http://localhost:1420 && cross-env DEVDOCK_RENDERER_URL=http://localhost:1420 electron .\"",
+    "electron:build": "pnpm build && pnpm electron:build-main",
+    "electron:smoke": "pnpm electron:build && node scripts/run-electron-smoke.mjs",
+    "agent:validate-providers": "node scripts/validate-agent-clis.mjs",
+    "agent:smoke-cli": "pnpm electron:build && node scripts/run-agent-cli-smoke.mjs",
+    "electron:package": "pnpm electron:build && pnpm electron:rebuild && electron-builder --publish never",
+    "electron:package:linux": "pnpm electron:package -- --linux deb --x64",
+    "electron:package:windows": "pnpm electron:package -- --win nsis --x64",
+    "electron:package:mac:x64": "pnpm electron:package -- --mac dmg zip --x64",
+    "electron:package:mac:arm64": "pnpm electron:package -- --mac dmg zip --arm64",
+    "release:checksums": "node scripts/generate-checksums.mjs",
+    "terminal:test": "vitest run electron/terminal-session-manager.test.ts",
+    "preview": "vite preview",
+    "lint": "eslint src --max-warnings=0",
+    "format": "prettier --config ../../packages/config/prettier.config.js --write \"src/**/*.{ts,tsx,css}\"",
+    "format:check": "prettier --config ../../packages/config/prettier.config.js --check \"src/**/*.{ts,tsx,css}\"",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "build": {
+    "appId": "dev.devdock.desktop",
+    "productName": "DevDock",
+    "artifactName": "DevDock_${version}_${arch}.${ext}",
+    "directories": {
+      "output": "release/electron",
+      "buildResources": "resources/icons"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**",
+      "resources/icons/**",
+      "package.json",
+      "!node_modules/electron{,/**}"
+    ],
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "category": "Development",
+      "icon": ".",
+      "executableName": "devdock",
+      "executableArgs": [
+        "--ozone-platform=x11",
+        "--disable-gpu",
+        "--disable-gpu-sandbox"
+      ],
+      "desktop": {
+        "entry": {
+          "StartupWMClass": "@devdock/desktop"
+        }
+      },
+      "syncDesktopName": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico",
+      "executableName": "DevDock",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "icon.png",
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "DevDock ${version}"
+    },
+    "deb": {
+      "afterInstall": "scripts/linux-after-install.sh",
+      "afterRemove": "scripts/linux-after-remove.sh",
+      "depends": [
+        "openssh-client"
+      ]
+    }
+  },
+  "dependencies": {
+    "node-pty": "^1.1.0",
+    "ssh2": "^1.17.0"
+  },
+  "devDependencies": {
+    "@devdock/config": "workspace:*",
+    "@devdock/hooks": "workspace:*",
+    "@devdock/types": "workspace:*",
+    "@devdock/ui": "workspace:*",
+    "@electron/rebuild": "^4.2.0",
+    "@radix-ui/react-select": "^2.3.4",
+    "@radix-ui/react-toast": "^1.2.20",
+    "@tanstack/react-query": "^5.59.0",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/ssh2": "^1.15.5",
+    "@vitejs/plugin-react": "^4.3.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^6.0.0",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "electron": "^40.10.2",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.28.1",
+    "lucide-react": "^1.25.0",
+    "prettier": "^3.9.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.0.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.0",
+    "vitest": "^2.1.0",
+    "wait-on": "^9.1.0",
+    "zustand": "^5.0.0"
+  }
+}

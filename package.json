@@ -1,0 +1,30 @@
+{
+  "name": "devdock",
+  "version": "0.15.5",
+  "private": true,
+  "type": "module",
+  "description": "Community kit for the local-first DevDock developer workspace",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.10",
+    "pnpm": ">=9"
+  },
+  "packageManager": "pnpm@9.15.9",
+  "scripts": {
+    "dev": "pnpm --filter @devdock/desktop electron:dev",
+    "build": "pnpm --filter @devdock/desktop build",
+    "lint": "pnpm --filter @devdock/desktop lint",
+    "format": "pnpm --filter @devdock/desktop format",
+    "format:check": "pnpm --filter @devdock/desktop format:check",
+    "test": "pnpm --filter @devdock/desktop test",
+    "typecheck": "pnpm --filter @devdock/desktop typecheck",
+    "clean": "pnpm -r exec rm -rf node_modules dist .turbo",
+    "verify": "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "typescript-eslint": "^8.20.0",
+    "typescript": "^5.6.2"
+  }
+}

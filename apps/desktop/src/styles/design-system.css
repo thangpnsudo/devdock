@@ -1,0 +1,117 @@
+:root {
+  color-scheme: dark;
+
+  /* DevDock identity for a dense desktop workspace. */
+  --dd-ink: #17171a;
+  --dd-paper: #fbfaf7;
+  --dd-cobalt: #5272ff;
+  --dd-cobalt-strong: #6f88ff;
+  --dd-orange: #f76b15;
+  --dd-lime: #bdee63;
+
+  /* Surfaces */
+  --dd-bg: #0f0f11;
+  --dd-bg-soft: #141416;
+  --dd-surface: #19191c;
+  --dd-surface-raised: #1e1e22;
+  --dd-surface-overlay: #242429;
+  --dd-surface-hover: #25252a;
+  --dd-surface-pressed: #2b2b31;
+  --dd-surface-selected: color-mix(in srgb, var(--dd-cobalt) 16%, var(--dd-surface));
+
+  /* Content */
+  --dd-fg: #f5f3ee;
+  --dd-fg-soft: #d8d6d0;
+  --dd-fg-muted: #98979d;
+  --dd-fg-subtle: #737279;
+  --dd-fg-disabled: #5e5d63;
+
+  /* Lines and focus */
+  --dd-border: rgba(251, 250, 247, 0.11);
+  --dd-border-strong: rgba(251, 250, 247, 0.2);
+  --dd-border-subtle: rgba(251, 250, 247, 0.07);
+  --dd-focus: #8ea2ff;
+  --dd-focus-ring: 0 0 0 3px rgba(82, 114, 255, 0.23);
+
+  /* Compatibility aliases while legacy selectors migrate to semantic tokens. */
+  --dd-accent: var(--dd-cobalt);
+  --dd-accent-strong: var(--dd-cobalt-strong);
+  --dd-accent-soft: rgba(82, 114, 255, 0.14);
+
+  /* Status */
+  --dd-success: #83d9b5;
+  --dd-success-soft: rgba(131, 217, 181, 0.12);
+  --dd-warning: #f4bd68;
+  --dd-warning-soft: rgba(244, 189, 104, 0.12);
+  --dd-danger: #ff7e8e;
+  --dd-danger-soft: rgba(255, 126, 142, 0.12);
+  --dd-info: var(--dd-cobalt-strong);
+  --dd-info-soft: rgba(82, 114, 255, 0.12);
+
+  /* Typography */
+  --dd-font-display:
+    'Schibsted Grotesk', 'Avenir Next', 'Segoe UI Variable Display', 'Segoe UI', sans-serif;
+  --dd-font: 'Hanken Grotesk', Inter, 'Segoe UI Variable Text', 'Segoe UI', sans-serif;
+  --dd-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --dd-font-terminal: 'ui-monospace', 'SFMono-Regular', Menlo, Consolas, monospace;
+  --dd-text-2xs: 10px;
+  --dd-text-xs: 11px;
+  --dd-text-sm: 12px;
+  --dd-text-md: 13px;
+  --dd-text-lg: 15px;
+  --dd-text-xl: 18px;
+  --dd-leading-tight: 1.15;
+  --dd-leading-normal: 1.45;
+  --dd-leading-relaxed: 1.6;
+
+  /* Density and geometry */
+  --dd-space-1: 4px;
+  --dd-space-2: 8px;
+  --dd-space-3: 12px;
+  --dd-space-4: 16px;
+  --dd-space-5: 20px;
+  --dd-space-6: 24px;
+  --dd-space-8: 32px;
+  --dd-space-10: 40px;
+  --dd-control-sm: 28px;
+  --dd-control-md: 34px;
+  --dd-control-lg: 40px;
+  --dd-radius-xs: 4px;
+  --dd-radius-sm: 7px;
+  --dd-radius: 10px;
+  --dd-radius-lg: 14px;
+  --dd-shadow-sm: 0 1px 0 rgba(255, 255, 255, 0.025), 0 5px 14px rgba(0, 0, 0, 0.2);
+  --dd-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --dd-resizer-hit-area: 8px;
+  --dd-resizer-line: 1px;
+
+  /* Motion */
+  --dd-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --dd-ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  --dd-duration-fast: 110ms;
+  --dd-duration-base: 180ms;
+  --dd-duration-slow: 280ms;
+  --dd-transition-control:
+    color var(--dd-duration-fast) var(--dd-ease-standard),
+    background-color var(--dd-duration-fast) var(--dd-ease-standard),
+    border-color var(--dd-duration-fast) var(--dd-ease-standard),
+    box-shadow var(--dd-duration-fast) var(--dd-ease-standard),
+    transform var(--dd-duration-fast) var(--dd-ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dd-duration-fast: 0ms;
+    --dd-duration-base: 0ms;
+    --dd-duration-slow: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
